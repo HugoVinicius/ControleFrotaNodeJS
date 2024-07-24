@@ -4,9 +4,13 @@ export const VEICULO_NOT_FOUND: string = "Veiculo não encontrado!";
 export const VEICULO_FALHA_CADASTRO: string = "Falha ao cadastrar o veiculo!";
 export const VEICULO_VALIDACAO_PLACA: string = "É necessário infomar a placa do veiculo!";
 
-// Mensagem referênte a operação comm motorista
+// Mensagem referênte a operação com motorista
 export const MOTORISTA_NOT_FOUND: string = "Motorista não encontrado!";
 export const MOTORISTA_FALHA_CADASTRO: string = "Falha ao cadastrar o motorista!";
+
+// Mensagem referênte a operação Utilizacao Veículo
+export const UTILIZACAO_NOT_FOUND: string = "Utilização não encontrada!";
+export const UTILIZACAO_FALHA_CADASTRO: string = "Falha ao cadastrar uma utilização!";
 
 // Mensagens Gerais
 export const CADASTRO_SUCESSO: string = "Cadastro realizado com sucesso!";

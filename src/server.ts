@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 
 import veiculoRoutes from './v1/router/veiculo-router';
 import motoristaRoutes from './v1/router/motoristas-router';
+import utilizacaoVeiculoRoutes from './v1/router/utilizacao-veiculo-router';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json())
 
 app.use('/v1/veiculos', veiculoRoutes);
 app.use('/v1/motoristas', motoristaRoutes);
+app.use('/v1/utilizacoes', utilizacaoVeiculoRoutes);
 
 route.get('/', (req: Request, res: Response) => {
   res.json({ success: true, message: 'API para gestão da frota de veiculo' })
