@@ -1,14 +1,19 @@
 
 import express, { Request, Response } from 'express';
 import { CarroInMemory } from '../in-memory/carro-in-memory';
+import { RetornoPadrao } from '../utils/retorno-padrao';
+import { Carro } from '../entities/carro';
 
 const carroRoutes = express.Router();
 const carroInMemory = new CarroInMemory();
 const notFound = 'Carro não encontrado';
 
-carroRoutes.post('/', (req: Request, res: Response) => {
+carroRoutes.post('/', (req: Request, res: Response) => { 
   const newObj = carroInMemory.create(req.body);
-  res.status(201).json(newObj);
+
+  const retorno = new RetornoPadrao<Carro>({ sucesso: true, mensagem: "", retorno: newObj });
+
+  res.status(201).json(retorno);
 });
 
 carroRoutes.get('/', (req: Request, res: Response) => {
