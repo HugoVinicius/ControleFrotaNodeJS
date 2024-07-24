@@ -3,48 +3,89 @@ import express, { Request, Response } from 'express';
 import { CarroInMemory } from '../in-memory/carro-in-memory';
 import { RetornoPadrao } from '../utils/retorno-padrao';
 import { Carro } from '../entities/carro';
+import { CADASTRO_SUCESSO, CARRO_FALHA_CADASTRO, CARRO_NOT_FOUND, DELETE_SUCESSO } from '../utils/constantes';
+import { Utilitario } from '../utils/utilitarios';
 
 const carroRoutes = express.Router();
 const carroInMemory = new CarroInMemory();
-const notFound = 'Carro não encontrado';
 
-carroRoutes.post('/', (req: Request, res: Response) => { 
-  const newObj = carroInMemory.create(req.body);
+carroRoutes.post('/', (req: Request, res: Response) => {
+  const retorno = new RetornoPadrao<Carro>({ sucesso: true, mensagem: CADASTRO_SUCESSO, retorno: null });
 
-  const retorno = new RetornoPadrao<Carro>({ sucesso: true, mensagem: "", retorno: newObj });
+  try {
+    const newObj = carroInMemory.create(req.body);
 
-  res.status(201).json(retorno);
+    if (newObj == null || newObj == undefined) {
+       retorno.sucesso = false;
+      retorno.mensagem = CARRO_FALHA_CADASTRO;
+    }
+
+    retorno.retorno = newObj;   
+    res.status(201).json(retorno);
+  } catch (error) {
+    Utilitario.handleError(res, error, retorno);
+  }
 });
 
 carroRoutes.get('/', (req: Request, res: Response) => {
-  const objAll = carroInMemory.findAll();
-  res.json(objAll);
+  const retorno = new RetornoPadrao<Carro[]>({ sucesso: true, mensagem: "", retorno: null });
+
+  try {
+    retorno.retorno = carroInMemory.findAll();
+    res.status(201).json(retorno);
+  } catch (error) {
+    Utilitario.handleError(res, error, retorno);
+  }
 });
 
 carroRoutes.get('/:id', (req: Request, res: Response) => {
-  const objBusca = carroInMemory.findById(Number(req.params.id));
-  if (objBusca) {
-    res.json(objBusca);
-  } else {
-    res.status(404).json({ success: false, message: notFound });
+  const retorno = new RetornoPadrao<Carro>({ sucesso: true, mensagem: "", retorno: null });
+  try {
+    const objBusca = carroInMemory.findById(Number(req.params.id));
+    if (objBusca) {
+      retorno.retorno = objBusca;
+      res.json(retorno);
+    } else {
+      retorno.sucesso = false;
+      retorno.mensagem = CARRO_NOT_FOUND;
+      res.status(404).json(retorno);
+    }
+  } catch (error) {
+    Utilitario.handleError(res, error, retorno);
   }
 });
 
 carroRoutes.put('/:id', (req: Request, res: Response) => {
-  const objAlterado = carroInMemory.update(Number(req.params.id), req.body);
-  if (objAlterado) {
-    res.json(objAlterado);
-  } else {
-    res.status(404).json({ success: false, message: notFound });
+  const retorno = new RetornoPadrao<Carro>({ sucesso: true, mensagem: "", retorno: null });
+  try {
+    const objAlterado = carroInMemory.update(Number(req.params.id), req.body);
+    if (objAlterado) {
+      retorno.retorno = objAlterado;
+      res.json(retorno);
+    } else {
+      retorno.sucesso = false;
+      retorno.mensagem = CARRO_NOT_FOUND;
+      res.status(404).json(retorno);
+    }
+  } catch (error) {
+    Utilitario.handleError(res, error, retorno);
   }
 });
 
 carroRoutes.delete('/:id', (req: Request, res: Response) => {
-  const objFinder = carroInMemory.delete(Number(req.params.id));
-  if (objFinder) {
-    res.json(objFinder);
-  } else {
-    res.status(404).json({ success: false, message: notFound });
+  const retorno = new RetornoPadrao<Carro>({ sucesso: true, mensagem: DELETE_SUCESSO, retorno: null });
+  try {
+    const objFinder = carroInMemory.delete(Number(req.params.id));
+    if (objFinder) {
+      retorno.retorno = objFinder;      
+      res.json(retorno);
+    } else {
+      retorno.sucesso = false;
+      retorno.mensagem = CARRO_NOT_FOUND;
+      res.status(404).json(retorno);
+    }
+  } catch (error) {
+    Utilitario.handleError(res, error, retorno);
   }
 });
 

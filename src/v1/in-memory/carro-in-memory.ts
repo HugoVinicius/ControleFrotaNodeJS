@@ -8,6 +8,11 @@ export class CarroInMemory extends UtilitarioInMemory implements CarroRepository
   private static nextId: number = 1;
 
   public create(obj: Carro): Carro {  
+
+    if (obj.placa == null || obj.placa == undefined || obj.placa.trim() == "") {
+      throw new Error("É necessário infomar a placa do veiculo!");
+    }
+    
     return this.createObject(obj, CarroInMemory.nextId++, CarroInMemory.dados, Carro);
   }
 
