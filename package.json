@@ -1,5 +1,6 @@
 {
   "name": "ControleFrotaNodeJS",
+  "description": "Api para gestão de uma frota de veiculo, utilizando NodeJS",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/HugoVinicius/ControleFrotaNodeJS.git",

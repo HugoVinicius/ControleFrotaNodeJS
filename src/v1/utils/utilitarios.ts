@@ -3,7 +3,7 @@ import { RetornoPadrao } from "./retorno-padrao";
 
 export class Utilitario {
 
-  public static handleError(res: any, error: any, retorno: RetornoPadrao) {
+  public static handleError(res: any, error: any, retorno: any) {
     retorno.sucesso = false;
 
     if (error instanceof Error) {
