@@ -1,12 +1,15 @@
 import express from 'express'
 
 import { Router, Request, Response } from 'express';
+import dotenv from 'dotenv';
 
 import veiculoRoutes from './v1/router/veiculo-router';
 import motoristaRoutes from './v1/router/motoristas-router';
 
+dotenv.config();
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const route = Router()
 
