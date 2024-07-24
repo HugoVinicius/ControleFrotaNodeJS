@@ -6,7 +6,7 @@ export type UtilizacaoVeiculoType = {
   id: number;
   dataInicio: Date;
   dataFim?: Date;
-  motivo: String;
+  motivo: string;
   motorista: Motorista;
   veiculo: Veiculo;
 }
@@ -14,7 +14,7 @@ export type UtilizacaoVeiculoType = {
 export class UtilizacaoVeiculo extends Base {
   dataInicio: Date;
   dataFim?: Date;
-  motivo: String;
+  motivo: string;
   motorista: Motorista;
   veiculo: Veiculo;
 

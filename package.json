@@ -11,6 +11,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@types/date-fns": "^2.6.0",
     "@types/node": "^20.14.12",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"

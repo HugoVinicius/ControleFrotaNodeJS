@@ -206,6 +206,108 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Utilização Veiculo",
+			"item": [
+				{
+					"name": "Buscar Utilização",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/v1/utilizacoes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"utilizacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Utilização",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/v1/utilizacoes/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"utilizacoes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Utilização",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataInicio\": \"2024-07-24\",\r\n    \"motivo\": \"Motivo da uitlização\",\r\n    \"veiculo\": {\r\n        \"id\": 1,\r\n        \"placa\": \"HGB9982\",\r\n        \"cor\": \"Branco\",\r\n        \"marca\": \"Fiat\"\r\n    },\r\n    \"motorista\": {\r\n        \"id\": 2,\r\n        \"nome\": \"Jonh Doe\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/v1/utilizacoes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"utilizacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar Utilização",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Hugo Vaz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/v1/utilizacoes/finalizar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"utilizacoes",
+								"finalizar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

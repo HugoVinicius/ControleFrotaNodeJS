@@ -7,7 +7,7 @@ export type RetornoPadraoType = {
 export class RetornoPadrao<Type> {
   sucesso: boolean;
   mensagem: string;
-  retorno: Type;
+  retorno: Type | any;
 
   constructor({sucesso, mensagem, retorno } : RetornoPadraoType ) {
     this.sucesso = sucesso;
