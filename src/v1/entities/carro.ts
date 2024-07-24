@@ -1,3 +1,5 @@
+import { Base } from "./base";
+
 export type CarroType = {
   id: number;
   placa: string;
@@ -5,13 +7,13 @@ export type CarroType = {
   marca: string;
 }
 
-export class Carro {
-  id: number;
+export class Carro extends Base {  
   placa: string;
   cor: string;
   marca: string;
   
   constructor({ id, placa, cor, marca }: CarroType) {
+    super();
     this.id = id;
     this.placa = placa;
     this.cor = cor;

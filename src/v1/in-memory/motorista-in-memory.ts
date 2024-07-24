@@ -1,32 +1,30 @@
 import { Motorista } from '../entities/motorista';
+import { UtilitarioInMemory } from '../utils/utilitario-in-memory';
 import { MotoristaRepository } from './../repository/motorista-repository';
 
-export class MotoristaInMemory implements MotoristaRepository {
+export class MotoristaInMemory extends UtilitarioInMemory implements MotoristaRepository {
 
-  private static dados = Motorista[] = [];
+  private static dados: Motorista[] = [];
   private static nextId: number = 1;
 
   create(obj: Motorista): Motorista {
-    obj.id = MotoristaInMemory.nextId++;
-    const newObj = new Motorista(obj);
-    MotoristaInMemory.dados.push(newObj);
-    return newObj;
+    return this.createObject(obj, MotoristaInMemory.nextId++, MotoristaInMemory.dados, Motorista);
   }
 
   findAll(): Motorista[] {
-    throw new Error('Method not implemented.');
+    return this.findAllObject(MotoristaInMemory.dados);
   }
 
   findById(id: number): Motorista | undefined {
-    throw new Error('Method not implemented.');
+    return this.findByIdObject(MotoristaInMemory.dados, id);
   }
 
   update(id: number, obj: Partial<Motorista>): Motorista | undefined {
-    throw new Error('Method not implemented.');
+    return this.updateObject(id, obj, this.findById.bind(this));
   }
 
   delete(id: number): Motorista | undefined {
-    throw new Error('Method not implemented.');
+    return this.deleteObject(MotoristaInMemory.dados, id);  
   }
   
 }

@@ -1,42 +1,29 @@
 import { Carro } from "../entities/carro";
 import { CarroRepository } from "../repository/carro-repository";
+import { UtilitarioInMemory } from "../utils/utilitario-in-memory";
 
-export class CarroInMemory implements CarroRepository {
+export class CarroInMemory extends UtilitarioInMemory implements CarroRepository {
   
   private static dados: Carro[] = [];
   private static nextId: number = 1;
 
-  public create(obj: Carro): Carro {
-    obj.id = CarroInMemory.nextId++;
-    const newObj = new Carro(obj);
-    CarroInMemory.dados.push(newObj);
-    return newObj;
+  public create(obj: Carro): Carro {  
+    return this.createObject(obj, CarroInMemory.nextId++, CarroInMemory.dados, Carro);
   }
 
   public findAll(): Carro[] {
-    return CarroInMemory.dados;
+    return this.findAllObject(CarroInMemory.dados);
   }
   
   public findById(id: number): Carro | undefined {
-    return CarroInMemory.dados.find(car => car.id === id);
+    return this.findByIdObject(CarroInMemory.dados, id);
   }
 
   public update(id: number, obj: Partial<Carro>): Carro | undefined {
-    const objBanco = this.findById(id);
-
-    if (objBanco) {
-      Object.assign(objBanco, obj);
-    }
-
-    return objBanco;
+    return this.updateObject(id, obj, this.findById.bind(this));
   }
   
   public delete(id: number): Carro | undefined {
-    const index = CarroInMemory.dados.findIndex(obj => obj.id === id);
-    if (index !== -1) {
-      return CarroInMemory.dados.splice(index, 1)[0];
-    }
-    return undefined;
+    return this.deleteObject(CarroInMemory.dados, id);    
   }
-
 }
