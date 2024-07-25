@@ -18,7 +18,6 @@ export const UTILIZACAO_NAO_EXCLUIR: string = "Só é permitido excluir utiliza�
 export const FALHA_VALIDAR_MOTORISTA_VEICULO: string = "Falha ao validar motorista é veiculo";
 export const UTILIZACAO_FINALIZADA: string = "Utilização já se encontra finalizada";
 
-
 // Mensagens Gerais
 export const CADASTRO_SUCESSO: string = "Cadastro realizado com sucesso!";
 export const DELETE_SUCESSO: string = "Exclusão realizada com sucesso!";

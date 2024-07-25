@@ -8,6 +8,11 @@ export class MotoristaInMemory extends UtilitarioInMemory implements MotoristaRe
   private static nextId: number = 1;
 
   create(obj: Motorista): Motorista {
+
+    if (obj.nome === null || obj.nome === undefined || obj.nome.trim() == "") {
+      throw new Error("É necessário informar o nome do motorista");      
+    }
+
     return this.createObject(obj, MotoristaInMemory.nextId++, MotoristaInMemory.dados, Motorista);
   }
 

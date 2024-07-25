@@ -1,6 +1,6 @@
 import { UtilizacaoVeiculoDTO } from '../dto/utilizacao-cadastro-dto';
 import { UtilizacaoVeiculoRepository } from '../repository/utilizacao-veiculo-repository';
-import { CADASTRO_SUCESSO, NAO_EXISTE_UTILIZACAO_EM_ABERTO, UTILIZACAO_FINALIZADA, UTILIZACAO_NAO_EXCLUIR, UTILIZACAO_NOT_FOUND } from '../utils/constantes';
+import { NAO_EXISTE_UTILIZACAO_EM_ABERTO, UTILIZACAO_FINALIZADA, UTILIZACAO_NAO_EXCLUIR, UTILIZACAO_NOT_FOUND } from '../utils/constantes';
 import { RetornoPadrao } from '../utils/retorno-padrao';
 import { UtilitarioInMemory } from '../utils/utilitario-in-memory';
 import { UtilizacaoVeiculo, UtilizacaoVeiculoType } from './../entities/utilizacao-veiculo';
@@ -20,7 +20,7 @@ export class UtilizacaoVeiculoInMemory extends UtilitarioInMemory implements Uti
       retorno: null
     });
 
-    if (utilizacaoCad.motivo === null || utilizacaoCad.motivo === undefined) {
+    if (utilizacaoCad.motivo === null || utilizacaoCad.motivo === undefined || utilizacaoCad.motivo.trim() == "") {
       retorno.sucesso = false;
       retorno.mensagem = "É necessário informar o motivo";
       return retorno;
@@ -37,7 +37,7 @@ export class UtilizacaoVeiculoInMemory extends UtilitarioInMemory implements Uti
 
     if (motoristaCadastrado === null || motoristaCadastrado === undefined) {
       retorno.sucesso = false;
-      retorno.mensagem = `Não é possível localizar o motórista: ${utilizacaoCad.idMotorista}`;
+      retorno.mensagem = `Não é possível localizar o motórista com o identificador ${utilizacaoCad.idMotorista}`;
       return retorno;
     }
 
