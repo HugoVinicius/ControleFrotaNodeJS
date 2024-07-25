@@ -2,9 +2,7 @@
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-
-
-Sistema web que permite controlar a utilização dos automóveis de uma empresa
+API para controle de frota
 
 ## Objetivo
 
