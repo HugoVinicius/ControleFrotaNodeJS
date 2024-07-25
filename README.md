@@ -46,6 +46,8 @@ e as informações do automóvel utilizado
 
 4. Para rodar os teste bastar executar o comando `yarn test`
 
-5. Retorno teste executado
+5. Imagem do teste 
 
-![alt text](https://github.com/HugoVinicius/ControleFrotaNodeJS/blob/main/img-readme/testeSuites.jpg)
+![imagem do teste em execução](https://github.com/HugoVinicius/ControleFrotaNodeJS/blob/main/img-readme/testeSuites.jpg)
+
+5. Na pasta tests Postman tem a colection para realizar os testes
