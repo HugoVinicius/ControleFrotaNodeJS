@@ -48,4 +48,4 @@ e as informações do automóvel utilizado
 
 5. Retorno teste executado
 
-![alt text](https://github.com/HugoVinicius/ControleFrotaNodeJS/blob/main/img-readme/artistas.jpg)
+![alt text](https://github.com/HugoVinicius/ControleFrotaNodeJS/blob/main/img-readme/testeSuites.jpg)
