@@ -45,3 +45,7 @@ e as informações do automóvel utilizado
 3. Execute o projeto com o comando `yarn dev`
 
 4. Para rodar os teste bastar executar o comando `yarn test`
+
+5. Retorno teste executado
+
+![alt text](https://github.com/HugoVinicius/ControleFrotaNodeJS/blob/main/img-readme/artistas.jpg)
